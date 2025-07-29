@@ -7,14 +7,14 @@ document.addEventListener('DOMContentLoaded', function () {
     loadTasks();
 
     // Add task on button click
-    addButton.onclick = function () {
+    addButton.addEventListener('click', function () {
         const taskText = taskInput.value.trim();
         if (taskText !== '') {
             addTask(taskText);
         } else {
             alert("Please enter a task.");
         }
-    };
+    });
 
     // Add task on Enter key press
     taskInput.addEventListener('keypress', function (event) {
@@ -36,13 +36,13 @@ document.addEventListener('DOMContentLoaded', function () {
         // Create remove button
         const removeButton = document.createElement('button');
         removeButton.textContent = 'Remove';
-        removeButton.className = 'remove-btn'; // Not using classList.add
+        removeButton.className = 'remove-btn'; // Required method
 
         // Assign click event to remove the task
-        removeButton.onclick = function () {
+        removeButton.addEventListener('click', function () {
             taskList.removeChild(li);
             removeTaskFromStorage(taskText);
-        };
+        });
 
         // Append button and li to task list
         li.appendChild(removeButton);
